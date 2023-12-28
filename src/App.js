@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const App = () => {
-  const [accessToken, setAccessToken] = useState('');
+  const [accessTokenn, setAccessToken] = useState('');
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -17,10 +17,11 @@ const App = () => {
     try {
       console.log("authCode>> "+code);
       const response = await axios.get(`http://localhost:5000/oauth2/callback?code=${code}`);
-      const { access_token } = response.data;
+      const { accessToken } = await response.data;
+      console.log(accessToken);
       
-      setAccessToken(access_token);
-      console.log("acessTknfrnt>> "+access_token);
+      setAccessToken(accessToken);
+      // console.log("acessTknfrnt>> "+access_token);
       // console.log("resdata>> "+response.data);
     } catch (error) {
       console.error('Error fetching access token: Frontend', error);
@@ -38,10 +39,10 @@ const App = () => {
 
   return (
     <div>
-      <p>Access Token: {accessToken}</p>
+      
       <h1>Salesforce Authentication</h1>
-      {accessToken ? (
-        <p>Access Token: {accessToken}</p>
+      {accessTokenn ? (
+        <p>Access Token: {accessTokenn}</p>
       ) : (
         <button onClick={handleSalesforceAuth}>Authenticate with Salesforce</button>
       )}
