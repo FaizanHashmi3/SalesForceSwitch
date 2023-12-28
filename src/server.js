@@ -5,6 +5,7 @@ const express = require('express');
 const cors = require('cors'); // Import the cors module
 const axios = require('axios');
 const app = express();
+app.use(express.urlencoded({ extended: true }))
 app.use(cors());
 
 const clientId = '3MVG95mg0lk4batjVwHpPkahCROA1JXckG2MoWXqDTqMcv2sI4NjLmzIJq33BJka_FCR0TwINW3LN.Yuclvxa';
@@ -36,7 +37,7 @@ app.get('/oauth2/callback', async (req, res) => {
    
     // Here you can send the accessToken to your frontend or perform other actions
 
-    res.send({ accessToken });
+    res.json({ accessToken });
   } catch (error) {
     console.error('Error fetching access token: backend', error);
     res.status(500).send('Error fetching access token');
