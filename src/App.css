@@ -118,6 +118,9 @@ button:hover
 {
   cursor: pointer;
 }
+.toggle:hover{
+  cursor: pointer;
+}
 .loader
 {
   margin: auto;
