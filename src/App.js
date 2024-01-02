@@ -150,7 +150,7 @@ return (
           return (<tr key={item.Id}>
 
                 <td>{item.ValidationName}</td>
-                <td onClick={()=>{handleToggle(item.Id, item.Metadata.active,item.Metadata.errorConditionFormula,item.Metadata.errorMessage
+                <td className='toggle' onClick={()=>{handleToggle(item.Id, item.Metadata.active,item.Metadata.errorConditionFormula,item.Metadata.errorMessage
 )}}>{item.Metadata.active?(<FaToggleOn color="green" size={30}/>):
                         (<FaToggleOff color="red" size={30}/>)          
                     }</td>
