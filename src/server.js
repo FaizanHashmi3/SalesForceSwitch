@@ -10,9 +10,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors());
 app.use(express.json());
 const __dirname1 = path.resolve();
-app.use(express.static(path.join(__dirname1, "/src/build")));
+app.use(express.static(path.join(__dirname1, "/build")));
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname1, "src", "build", "index.html"));
+    res.sendFile(path.join(__dirname1, "build", "index.html"));
 });
 var token = '';
 var url = " ";
