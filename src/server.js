@@ -1,25 +1,19 @@
-
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors'); 
 const axios = require('axios');
 const https = require('https');
-const path = require('path');
 const app = express();
 
 app.use(express.urlencoded({ extended: true }))
 app.use(cors());
 app.use(express.json());
-const __dirname1 = path.resolve();
-app.use(express.static(path.join(__dirname1, "/build")));
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname1, "build", "index.html"));
-});
 var token = '';
 var url = " ";
 
 const clientId = '3MVG95mg0lk4batjVwHpPkahCROA1JXckG2MoWXqDTqMcv2sI4NjLmzIJq33BJka_FCR0TwINW3LN.Yuclvxa';
 const clientSecret = '4296A62A96D50C0A3B928A183176446BF37CE71B889293DE61607C9BD34E2AE0';
-const redirectUri = 'https://salesforce-switch-1u2a.onrender.com'; 
+const redirectUri = 'http://localhost:3000'; 
 
 const salesforceAPI = 'https://cheems6-dev-ed.develop.my.salesforce.com/services/data/v33.0/tooling/sobjects/ValidationRule/';
 
@@ -185,7 +179,7 @@ async function udateValidationRuleStatus (ruleId, newStatus, accessToken, formul
 
 /* ************************************************************************************** */
 
-const PORT = 5000;
+const PORT = process.env.PORT||5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

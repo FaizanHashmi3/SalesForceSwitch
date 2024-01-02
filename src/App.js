@@ -29,7 +29,7 @@ const App = () => {
     try {
       setIsLoading(true);
       console.log("authCode>> " + code);
-      const response = await axios.get(`https://salesforce-switch-1u2a.onrender.com/oauth2/callback?code=${code}`);
+      const response = await axios.get(`http://localhost:5000/oauth2/callback?code=${code}`);
       const  accessToken  = await response.data.accessToken;
       const username  = await response.data.username;
       setName(username);
@@ -53,7 +53,7 @@ const App = () => {
   const fetchValidationRules = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get('https://salesforce-switch-1u2a.onrender.com/getValidationRules', {
+      const response = await axios.get('http://localhost:5000/getValidationRules', {
         headers: {
           Authorization: `Bearer ${ accessToken }`,
         },
@@ -73,7 +73,7 @@ const App = () => {
 const handleSalesforceAuth = () => {
   setIsLoading(true)
   const clientId = '3MVG95mg0lk4batjVwHpPkahCROA1JXckG2MoWXqDTqMcv2sI4NjLmzIJq33BJka_FCR0TwINW3LN.Yuclvxa';
-  const redirectUri = 'https://salesforce-switch-1u2a.onrender.com'; 
+  const redirectUri = 'http://localhost:3000'; 
 
   const salesforceAuthUrl = `https://login.salesforce.com/services/oauth2/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`;
 
